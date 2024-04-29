@@ -5,6 +5,7 @@ const cors = require('cors');
 const UserRouter = require('./routers/user');
 const CartRouter = require('./routers/cart');
 const InventoryRouter = require('./routers/inventory');
+const OrderRouter = require('./routers/order')
 
 const { authentication } = require('./middlewares/authentication');
 
@@ -21,6 +22,7 @@ mongoose
 
 app.use('/api', UserRouter);
 app.use('/cart', authentication, CartRouter);
+app.use('/order', authentication, OrderRouter)
 app.use('/items', InventoryRouter);
 
 app.listen(3000, () => {
